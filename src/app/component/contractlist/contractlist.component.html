@@ -1,0 +1,41 @@
+<!-- start: page body -->
+<div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-3">
+    <div class="container-fluid">
+
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table id="myTable" class="table card-table display dataTable table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th>id contract</th>
+                                <th>id demande</th>
+                                <th>id client</th>
+                                <th>name client</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let c of contract.slice().reverse() | paginate: { itemsPerPage: 8, currentPage: p}">
+                                
+                                <td><h6 class="mb-0">{{c.id}}</h6></td>
+                                <td><h6 class="mb-0">{{c.demande.id}}</h6></td>
+                                <td><h6 class="mb-0">{{c.demande.client.id}}</h6></td>
+                                <td><h6 class="mb-0">{{c.demande.client.firstName}} {{c.demande.client.lastName}}</h6></td>
+                               
+                                <td>
+                                    <a href="javascript:void(0);" class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white" href="http://localhost:8080/users/files/{{c.pdf}}">Dawnload &nbsp;<i class="fa fa-pencil"></i></a>
+                                    
+                                    <a href="javascript:void(0);" class="btn btn-sm btn-danger "(click)="deleteDemande(c.id)"> Delete &nbsp;<i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> <!-- .row end -->
+
+    </div>
+</div>
+

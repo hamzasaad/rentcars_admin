@@ -1,0 +1,131 @@
+<!-- start: page body -->
+<div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-3">
+    <div class="container-fluid">
+
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row row-deck">
+                            <div class="col-lg-4 col-md-12">
+                                <img src="http://localhost:8080/users/files/{{product.image}}" alt="" class="img-fluid">
+                            </div>
+                            <div class="col-lg-8 col-md-12">
+                                <div>
+                                    <h4 class="mt-4 mt-lg-0"><strong>{{product.name}}</strong></h4>
+                                    <div class="my-3">
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <span class="text-muted ms-3">(49 customer review)</span>
+                                    </div>
+                                    <p class="mb-0 text-primary fs-4 fw-bold">{{product.prix}} </p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">description
+                                            : </a><a class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">
+                                            {{product.description}}</a></p>
+
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">category
+                                            : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{product.categorypro.title}}
+                                        </a></p>
+
+                                    <div class="d-flex" (click)="Formvalalues(product)">
+
+                                        <button class="btn btn-primary mx-2">
+                                            update</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- .row end -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card" [formGroup]="formProduct" (ngSubmit)="updateProduct()">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Update voiture</h6>
+                                <div class="dropdown morphing scale-left">
+                                    <a href="#" class="card-fullscreen" data-bs-toggle="tooltip" title=""
+                                        data-bs-original-title="Card Full-Screen" aria-label="Card Full-Screen"><i
+                                            class="icon-size-fullscreen"></i></a>
+                                    <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                    <ul class="dropdown-menu shadow border-0 p-2">
+                                        <li><a class="dropdown-item" href="#">File Info</a></li>
+                                        <li><a class="dropdown-item" href="#">Copy to</a></li>
+                                        <li><a class="dropdown-item" href="#">Move to</a></li>
+                                        <li><a class="dropdown-item" href="#">Rename</a></li>
+                                        <li><a class="dropdown-item" href="#">Block</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+
+                                    <div class="col-sm-4">
+                                        <label class="form-label">product Name</label>
+                                        <input type="text" class="form-control form-control-lg" formControlName="name"
+                                            placeholder="Name"
+                                            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+                                        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['name'].errors['required']">name is required</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <label class="form-label"> Price </label>
+                                        <input type="number" class="form-control form-control-lg" formControlName="prix"
+                                            placeholder="$12.29"
+                                            [ngClass]="{ 'is-invalid': submitted && f['prix'].errors }">
+                                        <div *ngIf="submitted && f['prix'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['prix'].errors['required']">prix is required</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <label class="form-label">category</label>
+                                        <select formControlName="id_categoryproduct"
+                                            class="form-control form-control-lg" tabindex="-98">
+                                            <option *ngFor="let c of categorypro" [value]="c.id">
+                                                {{c.title}}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <label class="form-label">Product Description</label>
+                                        <textarea rows="4" formControlName="description"
+                                            class="form-control form-control-lg"
+                                            placeholder="Please type what you want..."
+                                            [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"></textarea>
+                                        <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['description'].errors['required']">description is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-primary" (click)="updateProduct()">Update</button>
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<!-- start: page body -->
+<div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-3">
+    <div class="container-fluid">
+
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table id="myTable" class="table card-table display dataTable table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Image</th>
+                                <th>Product Name</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pro of product | paginate: { itemsPerPage: 8, currentPage: p}">
+                                <td>{{pro.id}}</td>
+                                <td><img class="rounded-circle" src="http://localhost:8080/users/files/{{pro.image}}" class="rounded-circle" width="40" alt="Product img"></td>
+                                <td><h6 class="mb-0">{{pro.name}}</h6></td>
+                                <td><span class="text-muted">{{pro.description}}</span></td>
+                                <td>{{pro.prix}}$</td>
+                                
+                                <td>
+                                    <a  class="btn btn-sm btn-success" routerLink="/home/detailproduct/{{pro.id}}">Detail &nbsp; <i class="fa fa-pencil"></i></a>
+                                    <a href="javascript:void(0);" class="btn btn-sm btn-danger "(click)="deleteVoitures(pro.id)">Delete &nbsp;<i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> <!-- .row end -->
+
+    </div>
+</div>

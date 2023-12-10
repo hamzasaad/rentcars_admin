@@ -1,0 +1,240 @@
+<!-- start: page body -->
+<div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-3">
+    <div class="container-fluid">
+
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row row-deck">
+                            <div class="col-lg-4 col-md-12">
+                                <img src="http://localhost:8080/users/files/{{voiture.img}}" alt="" class="img-fluid">
+                            </div>
+                            <div class="col-lg-8 col-md-12">
+                                <div>
+                                    <h4 class="mt-4 mt-lg-0"><strong>{{voiture.name}}</strong></h4>
+                                    <div class="my-3">
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <span class="text-muted ms-3">(49 customer review)</span>
+                                    </div>
+                                    <p class="mb-0 text-primary fs-4 fw-bold">{{voiture.prix}} </p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">description
+                                            : </a><a class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">
+                                            {{voiture.description}}</a></p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">couleur
+                                            : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{voiture.couleur}}</a>
+                                    </p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">serie
+                                            : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{voiture.serie}}</a>
+                                    </p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">Klmetrage
+                                            : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{voiture.klm}}</a>
+                                    </p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">model
+                                            : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{voiture.model}}
+                                        </a></p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">nombre
+                                            de place : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{voiture.nbr_place}}</a>
+                                    </p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">carburant
+                                            : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{voiture.carburant}}
+                                        </a></p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">Transmition
+                                            : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{voiture.transmition}}
+                                        </a></p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">category
+                                            : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{voiture.category.title}}
+                                        </a></p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">marque
+                                            : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{voiture.marque.title}}</a>
+                                    </p>
+                                    <div class="d-flex" (click)="Formvalalues(voiture)">
+
+                                        <button class="btn btn-primary mx-2">
+                                            update</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- .row end -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card" [formGroup]="formVoiture" (ngSubmit)="updateVoiture1()">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Update voiture</h6>
+                                <div class="dropdown morphing scale-left">
+                                    <a href="#" class="card-fullscreen" data-bs-toggle="tooltip" title=""
+                                        data-bs-original-title="Card Full-Screen" aria-label="Card Full-Screen"><i
+                                            class="icon-size-fullscreen"></i></a>
+                                    <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                    <ul class="dropdown-menu shadow border-0 p-2">
+                                        <li><a class="dropdown-item" href="#">File Info</a></li>
+                                        <li><a class="dropdown-item" href="#">Copy to</a></li>
+                                        <li><a class="dropdown-item" href="#">Move to</a></li>
+                                        <li><a class="dropdown-item" href="#">Rename</a></li>
+                                        <li><a class="dropdown-item" href="#">Block</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-sm-4">
+                                        <label class="form-label">Voiture matricule*</label>
+                                        <input type="text" class="form-control form-control-lg" formControlName="serie"
+                                            placeholder="#2255"
+                                            [ngClass]="{ 'is-invalid': submitted && f['serie'].errors }">
+                                        <div *ngIf="submitted && f['serie'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['serie'].errors['required']">serie is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="form-label">Voiture Name</label>
+                                        <input type="text" class="form-control form-control-lg" formControlName="name"
+                                            placeholder="Name"
+                                            [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+                                        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['name'].errors['required']">name is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="form-label">Color</label>
+                                        <input type="text" class="form-control form-control-lg"
+                                            formControlName="couleur" placeholder="Enter here"
+                                            [ngClass]="{ 'is-invalid': submitted && f['couleur'].errors }">
+                                        <div *ngIf="submitted && f['couleur'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['couleur'].errors['required']">Color is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="form-label"> Price / Day</label>
+                                        <input type="number" class="form-control form-control-lg" formControlName="prix"
+                                            placeholder="$12.29"
+                                            [ngClass]="{ 'is-invalid': submitted && f['prix'].errors }">
+                                        <div *ngIf="submitted && f['prix'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['prix'].errors['required']">prix is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="form-label">nuber of place</label>
+                                        <input type="number" class="form-control form-control-lg"
+                                            formControlName="nbr_place" placeholder="[4-5]"
+                                            [ngClass]="{ 'is-invalid': submitted && f['nbr_place'].errors }">
+                                        <div *ngIf="submitted && f['nbr_place'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['nbr_place'].errors['required']">nbr_place is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                        <label class="form-label">Model</label>
+                                        <input type="text" class="form-control form-control-lg" formControlName="model"
+                                            placeholder="BMW"
+                                            [ngClass]="{ 'is-invalid': submitted && f['model'].errors }">
+                                        <div *ngIf="submitted && f['model'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['model'].errors['required']">model is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="form-label">carburant</label>
+                                        <select formControlName="carburant" class="form-control form-control-lg"
+                                            tabindex="-98">
+                                            <option value="10" [selected]="true">Disel</option>
+                                            <option value="20">essance</option>
+                                            <option value="30">electrique</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="form-label">Transmition</label>
+                                        <select formControlName="transmition" class="form-control form-control-lg"
+                                            tabindex="-98">
+                                            <option value="10" [selected]="true">Manuel</option>
+                                            <option value="20">Auto</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="form-label">category</label>
+                                        <select formControlName="id_category" class="form-control form-control-lg"
+                                            tabindex="-98">
+                                            <option *ngFor="let c of category" [value]="c.id" [selected]="true">
+                                                {{c.title}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="form-label">Marque</label>
+                                        <select formControlName="id_marque" class="form-control form-control-lg"
+                                            tabindex="-98">
+                                            <option *ngFor="let m of marque" [value]="m.id" [selected]="true">
+                                                {{m.title}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label class="form-label">Upload Product Images</label>
+                                        <input type="file" formControlName="img" class="form-control form-control-lg"
+                                            class="form-control" (change)="handelFileInput($event)">
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <label class="form-label">Product Description</label>
+                                        <textarea rows="4" formControlName="description"
+                                            class="form-control form-control-lg"
+                                            placeholder="Please type what you want..."
+                                            [ngClass]="{ 'is-invalid': submitted && f['description'].errors }">
+                                        </textarea>
+                                        <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['description'].errors['required']">description is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-primary" (click)="updateVoiture1()">Update</button>
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+    </div>
+</div>

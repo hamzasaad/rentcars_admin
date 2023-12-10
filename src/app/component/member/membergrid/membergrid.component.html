@@ -1,0 +1,26 @@
+<div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-3">
+    <div class="container-fluid">
+
+        <div class="row g-3">
+            <div class="col-lg-3 col-md-4 col-sm-12" *ngFor="let v of member | paginate: { itemsPerPage: 8, currentPage: p}">
+                <div class="card product-card" >
+                    <div class="card-body" >
+                        <div class="product-img text-center">
+                            <img src="http://localhost:8080/users/files/{{v.img}}" class="img-fluid" alt="">
+                            <div class="btn-hover text-center">
+                                <button class="btn btn-primary me-1" routerLink="/addvoiture"><i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-detail text-center pt-3">
+                            <h6><a routerLink="/detailvoiture/:id"><strong class="text-capitalize">{{v.name}}</strong></a></h6>
+                            <h6 class="mb-0"> {{v.description}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div> <!-- .row end -->
+
+    </div>
+</div>
+

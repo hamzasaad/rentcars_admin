@@ -1,0 +1,167 @@
+<!-- start: page body -->
+<div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-3">
+    <div class="container-fluid">
+
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row row-deck">
+
+                            <div class="col-lg-8 col-md-12">
+                                <div>
+                                    <h4 class="mt-4 mt-lg-0"><strong>demande</strong></h4>
+                                    <div class="my-3">
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <span class="text-muted ms-3">(49 customer review)</span>
+                                    </div>
+
+
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">date
+                                            depart
+                                            : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{demande.date_depart}}</a>
+                                    </p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">heur
+                                            depart
+                                            : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{demande.heur_depart}}</a>
+                                    </p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">date
+                                            retour
+                                            : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{demande.date_retour}}
+                                        </a></p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">heur_retour
+                                            de place : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{demande.heur_retour}}</a>
+                                    </p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">voiture
+                                            : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{demande.voiture.id}}
+                                        </a></p>
+                                    <p class="my-4"><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white">client
+                                            : </a><a
+                                            class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white">{{demande.client.id}}
+                                        </a></p>
+
+                                    <div class="d-flex" (click)="Formvalalues(demande)">
+
+                                        <button class="btn btn-primary mx-2">
+                                            update</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- .row end -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card" [formGroup]="formDemande" (ngSubmit)="updateDemande()">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Update demande</h6>
+                                <div class="dropdown morphing scale-left">
+                                    <a href="#" class="card-fullscreen" data-bs-toggle="tooltip" title=""
+                                        data-bs-original-title="Card Full-Screen" aria-label="Card Full-Screen"><i
+                                            class="icon-size-fullscreen"></i></a>
+                                    <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                    <ul class="dropdown-menu shadow border-0 p-2">
+                                        <li><a class="dropdown-item" href="#">File Info</a></li>
+                                        <li><a class="dropdown-item" href="#">Copy to</a></li>
+                                        <li><a class="dropdown-item" href="#">Move to</a></li>
+                                        <li><a class="dropdown-item" href="#">Rename</a></li>
+                                        <li><a class="dropdown-item" href="#">Block</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-sm-6">
+                                        <p>
+                                            <input class="form-control" placeholder="Journey Date"
+                                                data-select="datepicker" type="date" formControlName="date_depart"
+                                                [ngClass]="{ 'is-invalid': submitted && f['date_depart'].errors }">
+
+                                        </p>
+                                        <div *ngIf="submitted && f['date_depart'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['date_depart'].errors['required']">title is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p>
+                                            <input class="form-control" placeholder="Journey Date"
+                                                data-select="datepicker" type="date" formControlName="date_retour"
+                                                [ngClass]="{ 'is-invalid': submitted && f['date_retour'].errors }">
+                                        </p>
+                                        <div *ngIf="submitted && f['date_retour'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['date_retour'].errors['required']">title is required</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <p class="input-group clockpicker" data-placement="bottom" data-align="top"
+                                            data-autoclose="true">
+                                            <input type="text" class="form-control" placeholder="Journey Time"
+                                                formControlName="heur_depart"
+                                                [ngClass]="{ 'is-invalid': submitted && f['heur_depart'].errors }" />
+                                        </p>
+                                        <div *ngIf="submitted && f['heur_depart'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['heur_depart'].errors['required']">title is required</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <p class="input-group clockpicker" data-placement="bottom" data-align="top"
+                                            data-autoclose="true">
+                                            <input type="text" class="form-control" placeholder="Journey Time retour"
+                                                formControlName="heur_retour"
+                                                [ngClass]="{ 'is-invalid': submitted && f['heur_retour'].errors }" />
+                                        </p>
+                                        <div *ngIf="submitted && f['heur_retour'].errors" class="invalid-feedback">
+                                            <div *ngIf="f['heur_retour'].errors['required']">title is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" formControlName="id_voiture">
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" formControlName="id_client">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="card-footer" align="center">
+                                <button type="button" class="btn btn-primary" (click)="updateDemande()">Update</button>
+                                &nbsp;
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div> <!-- .row end -->
+
+        </div>
+    </div>
+
+</div>

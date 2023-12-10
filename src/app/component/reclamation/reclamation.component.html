@@ -1,0 +1,40 @@
+<!-- start: page body -->
+<div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-3">
+    <div class="container-fluid">
+
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table id="myTable" class="table card-table display dataTable table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>image</th>
+                                <th>Title</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let r of reclamation | paginate: { itemsPerPage: 8, currentPage: p}">
+                                
+                                <td><h6 class="mb-0">{{r.id}}</h6></td>
+                                <td><h6 class="mb-0">{{r.nom}}</h6></td>
+                                <td><span class="text-muted">{{r.email}}</span></td>
+                                <td><h6 class="mb-0">{{r.phone}}</h6></td>
+                                <td><h6 class="mb-0">{{r.subject}}</h6></td>
+                                <td><h6 class="mb-0">{{r.message}}</h6></td>
+                                <td>
+                                    <a href="javascript:void(0);" class="btn btn-sm btn-success" routerLink="/home/detailreclamation/{{r.id}}"><i class="fa fa-pencil">Detail Message</i></a>
+                                    <a href="javascript:void(0);" class="btn btn-sm btn-danger "(click)="deleteMessage(r.id)"><i class="fa fa-trash">Supprimer</i></a>
+                                </td>
+                            </tr>
+                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> <!-- .row end -->
+
+    </div>
+</div>
+
+

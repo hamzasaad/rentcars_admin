@@ -1,0 +1,104 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container" >
+   <div class="col-md-12">
+      <div class="invoice" id="htmlData">
+         <!-- begin invoice-company -->
+         <div class="invoice-company text-inverse f-w-600">
+            <span class="pull-right hidden-print">
+            <a (click)="openPDF()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-file t-plus-1 text-danger fa-fw fa-lg"></i> Export as PDF</a>
+            <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
+            </span>
+            gauto
+         </div>
+         <!-- end invoice-company -->
+         <!-- begin invoice-header -->
+         <div class="invoice-header">
+            <div class="invoice-from">
+               <small>from</small>
+               <address class="m-t-5 m-b-5">
+                  <strong class="text-inverse">gauto</strong><br>
+                  kairouan<br>
+                  City, Zip Code<br>
+                  Phone: (216) 955-12824<br>
+                  Fax: (216) 456-7890
+               </address>
+            </div>
+            <div class="invoice-to">
+               <small>to</small>
+               <address class="m-t-5 m-b-5">
+                  <strong class="text-inverse">{{demande.client.firstName}}{{demande.client.lastName}}</strong><br>
+                  {{demande.client.adress}}<br>
+                  City, Zip Code<br>
+                  Phone: (123) 456-7890<br>
+                  Fax: (123) 456-7890
+               </address>
+            </div>
+            <div class="invoice-date">
+               <small>Invoice / July period</small>
+               <div class="date text-inverse m-t-5">August 3,2012</div>
+               <div class="invoice-detail">
+                  #0000123DSS<br>
+                  Services Product
+               </div>
+            </div>
+         </div>
+         <!-- end invoice-header -->
+         <!-- begin invoice-content -->
+         <div class="invoice-content">
+            <!-- begin table-responsive -->
+            <div class="table-responsive">
+               <table class="table table-invoice">
+                  <thead>
+                     <tr>
+                        <th>car DESCRIPTION</th>
+                        <th class="text-center" width="10%">car name</th>
+                        <th class="text-center" width="10%">model</th>
+                        <th class="text-right" width="20%">car serie</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr >
+                        <td>
+                           <small>{{demande.voiture.description}}</small>
+                        </td>
+                        <td class="text-center">{{demande.voiture.name}}</td>
+                        <td class="text-center">{{demande.voiture.model}}</td>
+                        <td class="text-right">{{demande.voiture.serie}}</td>
+                     </tr>
+                     
+                  </tbody>
+               </table>
+            </div>
+            <!-- end table-responsive -->
+            <!-- begin invoice-price -->
+            <div class="invoice-price">
+              
+               <div class="invoice-price-right">
+                  <small>TOTAL</small> <span class="f-w-600">{{demande.prix_totale}}</span>
+               </div>
+            </div>
+            <!-- end invoice-price -->
+         </div>
+         <!-- end invoice-content -->
+         <!-- begin invoice-note -->
+         <div class="invoice-note">
+            * Make all cheques payable to [Your Company Name]<br>
+            * Payment is due within 30 days<br>
+            * If you have any questions concerning this invoice, contact  [Name, Phone Number, Email]
+         </div>
+         <!-- end invoice-note -->
+         <!-- begin invoice-footer -->
+         <div class="invoice-footer">
+            <p class="text-center m-b-5 f-w-600">
+               THANK YOU FOR YOUR BUSINESS
+            </p>
+            <p class="text-center">
+               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> matiasgallipoli.com</span>
+               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:016-18192302</span>
+               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> rtiemps@gmail.com</span>
+            </p>
+         </div>
+         <!-- end invoice-footer -->
+      </div>
+   </div>
+</div>

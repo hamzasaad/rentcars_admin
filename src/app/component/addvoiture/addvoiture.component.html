@@ -1,0 +1,148 @@
+<div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-3">
+    <div class="container-fluid">
+        <div class="row g-3">
+            <div class="col-12">
+                <form  [formGroup]="formVoiture" (ngSubmit)="onSubmit()">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="card-title m-0">Add New Product</h6>
+                            <div class="dropdown morphing scale-left">
+                                <a href="#" class="card-fullscreen" data-bs-toggle="tooltip" title=""
+                                    data-bs-original-title="Card Full-Screen" aria-label="Card Full-Screen"><i
+                                        class="icon-size-fullscreen"></i></a>
+                                <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                <ul class="dropdown-menu shadow border-0 p-2">
+                                    <li><a class="dropdown-item" href="#">File Info</a></li>
+                                    <li><a class="dropdown-item" href="#">Copy to</a></li>
+                                    <li><a class="dropdown-item" href="#">Move to</a></li>
+                                    <li><a class="dropdown-item" href="#">Rename</a></li>
+                                    <li><a class="dropdown-item" href="#">Block</a></li>
+                                    <li><a class="dropdown-item" href="#">Delete</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-sm-4">
+                                    <label class="form-label">Voiture matricule*</label>
+                                    <input type="text" class="form-control form-control-lg" formControlName="serie"
+                                        placeholder="#2255"
+                                        [ngClass]="{ 'is-invalid': submitted && f['serie'].errors }">
+                                    <div *ngIf="submitted && f['serie'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['serie'].errors['required']">first name is required</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form-label">Voiture Name</label>
+                                    <input type="text" class="form-control form-control-lg" formControlName="name"
+                                        placeholder="Name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+                                    <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['name'].errors['required']">voiture name is required</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form-label">Nombre of klm</label>
+                                    <input type="text" class="form-control form-control-lg" formControlName="klm"
+                                        placeholder="klm" [ngClass]="{ 'is-invalid': submitted && f['klm'].errors }">
+                                    <div *ngIf="submitted && f['klm'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['klm'].errors['required']">first name is required</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="form-label">Color</label>
+                                    <input type="text" class="form-control form-control-lg" formControlName="couleur"
+                                        placeholder="Enter here"
+                                        [ngClass]="{ 'is-invalid': submitted && f['couleur'].errors }">
+                                    <div *ngIf="submitted && f['couleur'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['couleur'].errors['required']">first name is required</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label class="form-label"> Price / Day</label>
+                                    <input type="number" class="form-control form-control-lg" formControlName="prix"
+                                        placeholder="$12.29"
+                                        [ngClass]="{ 'is-invalid': submitted && f['prix'].errors }">
+                                    <div *ngIf="submitted && f['prix'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['prix'].errors['required']">first name is required</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label class="form-label">nuber of place</label>
+                                    <input type="number" class="form-control form-control-lg"
+                                        formControlName="nbr_place" placeholder="[4-5]"
+                                        [ngClass]="{ 'is-invalid': submitted && f['nbr_place'].errors }">
+                                    <div *ngIf="submitted && f['nbr_place'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['nbr_place'].errors['required']">first name is required</div>
+                                    </div>
+                                </div>
+                               
+                                <div class="col-sm-3">
+                                    <label class="form-label">Model</label>
+                                    <input type="text" class="form-control form-control-lg" formControlName="model"
+                                        placeholder="2018" [ngClass]="{ 'is-invalid': submitted && f['model'].errors }">
+                                    <div *ngIf="submitted && f['model'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['model'].errors['required']">first name is required</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label class="form-label">carburant</label>
+                                    <select formControlName="carburant" class="form-control form-control-lg"
+                                        tabindex="-98">
+                                        <option value="10" [selected]="true">Disel</option>
+                                        <option value="20">essance</option>
+                                        <option value="30">electrique</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label class="form-label">Transmition</label>
+                                    <select formControlName="transmition" class="form-control form-control-lg"
+                                        tabindex="-98">
+                                        <option value="10" [selected]="true">Manuel</option>
+                                        <option value="20">Auto</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label class="form-label">category</label>
+                                    <select formControlName="id_category" class="form-control form-control-lg"
+                                        tabindex="-98">
+                                        <option *ngFor="let c of category" [value]="c.id">{{c.title}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label class="form-label">Marque</label>
+                                    <select formControlName="id_marque" class="form-control form-control-lg"
+                                        tabindex="-98">
+                                        <option *ngFor="let m of marque" [value]="m.id">{{m.title}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-12">
+                                    <label class="form-label">Upload Product Images</label>
+                                    <input type="file" formControlName="img" class="form-control form-control-lg"
+                                        class="form-control" (change)="handelFileInput($event)">
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="form-label">Product Description</label>
+                                    <textarea rows="4" formControlName="description"
+                                        class="form-control form-control-lg" placeholder="Please type what you want..."
+                                        [ngClass]="{ 'is-invalid': submitted && f['description'].errors }">
+                                </textarea>
+                                    <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['description'].errors['required']">first name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="button" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div> <!-- .row end -->
+
+    </div>
+</div>

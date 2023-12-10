@@ -1,0 +1,46 @@
+<!-- start: page body -->
+<div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-3">
+    <div class="container-fluid">
+
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table id="myTable" class="table card-table display dataTable table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>id voiture</th>
+                                <th>id client</th>
+                                <th>date depart</th>
+                                <th>date retour</th>
+                                <th>type payement</th>
+                                <th>Statu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let d of demande.slice().reverse() | paginate: { itemsPerPage: 8, currentPage: p}">
+                                
+                                <td><h6 class="mb-0">{{d.id}}</h6></td>
+                                <td><h6 class="mb-0">{{d.voiture.id}}</h6></td>
+                                <td><h6 class="mb-0">{{d.client.firstName}} {{d.client.lastName}}</h6></td>
+                                <td><span class="text-muted">{{d.date_depart}}</span></td>
+                                <td><span class="text-muted">{{d.date_retour}}</span></td>
+                                <td><span class="text-muted">{{d.type_payement}}</span></td>
+                                <td><span class="small rounded py-1 px-2 m-1 fw-normal bg-secondary text-white" *ngIf="d.status=='Accepted'">{{d.status}}</span>
+                                    <span class="small rounded py-1 px-2 m-1 fw-normal bg-warning text-white" *ngIf="d.status!='Accepted'">en attente</span></td>
+                                <td>
+                                    <a href="javascript:void(0);" class="small rounded py-1 px-2 m-1 fw-normal bg-info text-white" routerLink="/home/detaildemande/{{d.id}}">Details &nbsp;<i class="fa fa-pencil"></i></a>
+                                    <a href="javascript:void(0);" class="btn btn-sm btn-success" routerLink="/home/addcontract/{{d.id}}" (click)="acceptDemande(d.id)">accepter &nbsp;<i class="fa fa-pencil"></i></a>
+                                    <a href="javascript:void(0);" class="btn btn-sm btn-danger "(click)="deleteDemande(d.id)">supprimer &nbsp;<i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> <!-- .row end -->
+
+    </div>
+</div>
+

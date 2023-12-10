@@ -1,0 +1,96 @@
+<!-- start: page body -->
+<div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-3">
+    <div class="container-fluid">
+
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row row-deck">
+                            <div class="col-lg-4 col-md-12">
+                                <img src="http://localhost:8080/users/files/{{category.image}}" alt="" class="img-fluid">
+                            </div>
+                            <div class="col-lg-8 col-md-12">
+                                <div>
+                                    <h4 class="mt-4 mt-lg-0"><strong>{{category.title}}</strong></h4>
+                                    <div class="my-3">
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <span class="text-muted ms-3">(49 customer review)</span>
+                                    </div>
+                                    
+                                    <div class="d-flex" (click)="Formvalalues(category)">
+                                        
+                                        <button class="btn btn-primary mx-2">
+                                            update</button>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- .row end -->
+        <div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1 mt-3">
+            <div class="container-fluid">
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card" [formGroup]="formCategory" (ngSubmit)="updateCategory()">
+                            <div class="card-header">
+                                <h6 class="card-title m-0">Update Category</h6>
+                                <div class="dropdown morphing scale-left">
+                                    <a href="#" class="card-fullscreen" data-bs-toggle="tooltip" title=""
+                                        data-bs-original-title="Card Full-Screen" aria-label="Card Full-Screen"><i
+                                            class="icon-size-fullscreen"></i></a>
+                                    <a href="#" class="more-icon dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                    <ul class="dropdown-menu shadow border-0 p-2">
+                                        <li><a class="dropdown-item" href="#">File Info</a></li>
+                                        <li><a class="dropdown-item" href="#">Copy to</a></li>
+                                        <li><a class="dropdown-item" href="#">Move to</a></li>
+                                        <li><a class="dropdown-item" href="#">Rename</a></li>
+                                        <li><a class="dropdown-item" href="#">Block</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-sm-4">
+                                        <label class="form-label">Title</label>
+                                        <input type="text" class="form-control form-control-lg" formControlName="title"
+                                            placeholder="#2255" [ngClass]="{ 'is-invalid': submitted && f['title'].errors }">
+                                            <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+                                                <div *ngIf="f['title'].errors['required']">title is required</div>
+                                            </div>
+                                    </div>
+                                    
+                                    
+                                
+                                    <div class="col-lg-12">
+                                        <label class="form-label">Upload Category Images</label>
+                                        <input type="file" formControlName="image" class="form-control form-control-lg"
+                                            class="form-control" (change)="handelFileInput($event)">
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-primary" (click)="updateCategory()">Update</button>
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row end -->
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
